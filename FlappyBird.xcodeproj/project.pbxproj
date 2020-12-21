@@ -8,22 +8,76 @@
 
 /* Begin PBXBuildFile section */
 		C430C3952590FD5900C1B0A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C430C3942590FD5900C1B0A6 /* AppDelegate.swift */; };
-		C430C3972590FD5900C1B0A6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C430C3962590FD5900C1B0A6 /* GameScene.sks */; };
-		C430C39B2590FD5900C1B0A6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C430C39A2590FD5900C1B0A6 /* GameScene.swift */; };
+		C430C3972590FD5900C1B0A6 /* WorldScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C430C3962590FD5900C1B0A6 /* WorldScene.sks */; };
+		C430C39B2590FD5900C1B0A6 /* WorldScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C430C39A2590FD5900C1B0A6 /* WorldScene.swift */; };
 		C430C39D2590FD5900C1B0A6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C430C39C2590FD5900C1B0A6 /* GameViewController.swift */; };
 		C430C3A02590FD5900C1B0A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C430C39E2590FD5900C1B0A6 /* Main.storyboard */; };
 		C430C3A22590FD5D00C1B0A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C430C3A12590FD5D00C1B0A6 /* Assets.xcassets */; };
+		C430C3C82590FE4800C1B0A6 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3AE2590FE4400C1B0A6 /* 9.png */; };
+		C430C3C92590FE4800C1B0A6 /* redbird-downflap.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3AF2590FE4400C1B0A6 /* redbird-downflap.png */; };
+		C430C3CA2590FE4800C1B0A6 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3B02590FE4400C1B0A6 /* 1.png */; };
+		C430C3CB2590FE4800C1B0A6 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3B12590FE4400C1B0A6 /* 2.png */; };
+		C430C3CC2590FE4800C1B0A6 /* bluebird-midflap.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3B22590FE4400C1B0A6 /* bluebird-midflap.png */; };
+		C430C3CD2590FE4800C1B0A6 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3B32590FE4500C1B0A6 /* 5.png */; };
+		C430C3CE2590FE4800C1B0A6 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3B42590FE4500C1B0A6 /* message.png */; };
+		C430C3CF2590FE4800C1B0A6 /* bluebird-downflap.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3B52590FE4500C1B0A6 /* bluebird-downflap.png */; };
+		C430C3D02590FE4800C1B0A6 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3B62590FE4600C1B0A6 /* 0.png */; };
+		C430C3D12590FE4800C1B0A6 /* gameover.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3B72590FE4600C1B0A6 /* gameover.png */; };
+		C430C3D22590FE4800C1B0A6 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3B82590FE4600C1B0A6 /* 6.png */; };
+		C430C3D32590FE4800C1B0A6 /* redbird-upflap.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3B92590FE4600C1B0A6 /* redbird-upflap.png */; };
+		C430C3D42590FE4800C1B0A6 /* background-day.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3BA2590FE4600C1B0A6 /* background-day.png */; };
+		C430C3D52590FE4800C1B0A6 /* yellowbird-upflap.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3BB2590FE4600C1B0A6 /* yellowbird-upflap.png */; };
+		C430C3D62590FE4800C1B0A6 /* base.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3BC2590FE4600C1B0A6 /* base.png */; };
+		C430C3D72590FE4800C1B0A6 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3BD2590FE4700C1B0A6 /* 8.png */; };
+		C430C3D82590FE4800C1B0A6 /* pipe-red.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3BE2590FE4700C1B0A6 /* pipe-red.png */; };
+		C430C3D92590FE4800C1B0A6 /* yellowbird-downflap.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3BF2590FE4700C1B0A6 /* yellowbird-downflap.png */; };
+		C430C3DA2590FE4800C1B0A6 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3C02590FE4700C1B0A6 /* 3.png */; };
+		C430C3DB2590FE4800C1B0A6 /* redbird-midflap.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3C12590FE4700C1B0A6 /* redbird-midflap.png */; };
+		C430C3DC2590FE4800C1B0A6 /* pipe-green.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3C22590FE4700C1B0A6 /* pipe-green.png */; };
+		C430C3DD2590FE4800C1B0A6 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3C32590FE4700C1B0A6 /* 7.png */; };
+		C430C3DE2590FE4800C1B0A6 /* bluebird-upflap.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3C42590FE4800C1B0A6 /* bluebird-upflap.png */; };
+		C430C3DF2590FE4800C1B0A6 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3C52590FE4800C1B0A6 /* 4.png */; };
+		C430C3E02590FE4800C1B0A6 /* background-night.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3C62590FE4800C1B0A6 /* background-night.png */; };
+		C430C3E12590FE4800C1B0A6 /* yellowbird-midflap.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3C72590FE4800C1B0A6 /* yellowbird-midflap.png */; };
+		C430C3E42591076A00C1B0A6 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = C430C3E32591076A00C1B0A6 /* Base.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C430C3912590FD5800C1B0A6 /* FlappyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C430C3942590FD5900C1B0A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C430C3962590FD5900C1B0A6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		C430C39A2590FD5900C1B0A6 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		C430C3962590FD5900C1B0A6 /* WorldScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WorldScene.sks; sourceTree = "<group>"; };
+		C430C39A2590FD5900C1B0A6 /* WorldScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldScene.swift; sourceTree = "<group>"; };
 		C430C39C2590FD5900C1B0A6 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		C430C39F2590FD5900C1B0A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C430C3A12590FD5D00C1B0A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C430C3A32590FD5D00C1B0A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C430C3AE2590FE4400C1B0A6 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		C430C3AF2590FE4400C1B0A6 /* redbird-downflap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redbird-downflap.png"; sourceTree = "<group>"; };
+		C430C3B02590FE4400C1B0A6 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		C430C3B12590FE4400C1B0A6 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		C430C3B22590FE4400C1B0A6 /* bluebird-midflap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bluebird-midflap.png"; sourceTree = "<group>"; };
+		C430C3B32590FE4500C1B0A6 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		C430C3B42590FE4500C1B0A6 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		C430C3B52590FE4500C1B0A6 /* bluebird-downflap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bluebird-downflap.png"; sourceTree = "<group>"; };
+		C430C3B62590FE4600C1B0A6 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+		C430C3B72590FE4600C1B0A6 /* gameover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameover.png; sourceTree = "<group>"; };
+		C430C3B82590FE4600C1B0A6 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		C430C3B92590FE4600C1B0A6 /* redbird-upflap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redbird-upflap.png"; sourceTree = "<group>"; };
+		C430C3BA2590FE4600C1B0A6 /* background-day.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-day.png"; sourceTree = "<group>"; };
+		C430C3BB2590FE4600C1B0A6 /* yellowbird-upflap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowbird-upflap.png"; sourceTree = "<group>"; };
+		C430C3BC2590FE4600C1B0A6 /* base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = base.png; sourceTree = "<group>"; };
+		C430C3BD2590FE4700C1B0A6 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		C430C3BE2590FE4700C1B0A6 /* pipe-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pipe-red.png"; sourceTree = "<group>"; };
+		C430C3BF2590FE4700C1B0A6 /* yellowbird-downflap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowbird-downflap.png"; sourceTree = "<group>"; };
+		C430C3C02590FE4700C1B0A6 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		C430C3C12590FE4700C1B0A6 /* redbird-midflap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redbird-midflap.png"; sourceTree = "<group>"; };
+		C430C3C22590FE4700C1B0A6 /* pipe-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pipe-green.png"; sourceTree = "<group>"; };
+		C430C3C32590FE4700C1B0A6 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		C430C3C42590FE4800C1B0A6 /* bluebird-upflap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bluebird-upflap.png"; sourceTree = "<group>"; };
+		C430C3C52590FE4800C1B0A6 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		C430C3C62590FE4800C1B0A6 /* background-night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-night.png"; sourceTree = "<group>"; };
+		C430C3C72590FE4800C1B0A6 /* yellowbird-midflap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowbird-midflap.png"; sourceTree = "<group>"; };
+		C430C3E32591076A00C1B0A6 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +110,58 @@
 		C430C3932590FD5800C1B0A6 /* FlappyBird */ = {
 			isa = PBXGroup;
 			children = (
+				C430C3AD2590FE2E00C1B0A6 /* Assets */,
 				C430C3942590FD5900C1B0A6 /* AppDelegate.swift */,
-				C430C3962590FD5900C1B0A6 /* GameScene.sks */,
-				C430C39A2590FD5900C1B0A6 /* GameScene.swift */,
+				C430C3962590FD5900C1B0A6 /* WorldScene.sks */,
+				C430C39A2590FD5900C1B0A6 /* WorldScene.swift */,
+				C430C3E62591078900C1B0A6 /* World */,
 				C430C39C2590FD5900C1B0A6 /* GameViewController.swift */,
 				C430C39E2590FD5900C1B0A6 /* Main.storyboard */,
 				C430C3A12590FD5D00C1B0A6 /* Assets.xcassets */,
 				C430C3A32590FD5D00C1B0A6 /* Info.plist */,
 			);
 			path = FlappyBird;
+			sourceTree = "<group>";
+		};
+		C430C3AD2590FE2E00C1B0A6 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C430C3B62590FE4600C1B0A6 /* 0.png */,
+				C430C3B02590FE4400C1B0A6 /* 1.png */,
+				C430C3B12590FE4400C1B0A6 /* 2.png */,
+				C430C3C02590FE4700C1B0A6 /* 3.png */,
+				C430C3C52590FE4800C1B0A6 /* 4.png */,
+				C430C3B32590FE4500C1B0A6 /* 5.png */,
+				C430C3B82590FE4600C1B0A6 /* 6.png */,
+				C430C3C32590FE4700C1B0A6 /* 7.png */,
+				C430C3BD2590FE4700C1B0A6 /* 8.png */,
+				C430C3AE2590FE4400C1B0A6 /* 9.png */,
+				C430C3BA2590FE4600C1B0A6 /* background-day.png */,
+				C430C3C62590FE4800C1B0A6 /* background-night.png */,
+				C430C3BC2590FE4600C1B0A6 /* base.png */,
+				C430C3B52590FE4500C1B0A6 /* bluebird-downflap.png */,
+				C430C3B22590FE4400C1B0A6 /* bluebird-midflap.png */,
+				C430C3C42590FE4800C1B0A6 /* bluebird-upflap.png */,
+				C430C3B72590FE4600C1B0A6 /* gameover.png */,
+				C430C3B42590FE4500C1B0A6 /* message.png */,
+				C430C3C22590FE4700C1B0A6 /* pipe-green.png */,
+				C430C3BE2590FE4700C1B0A6 /* pipe-red.png */,
+				C430C3AF2590FE4400C1B0A6 /* redbird-downflap.png */,
+				C430C3C12590FE4700C1B0A6 /* redbird-midflap.png */,
+				C430C3B92590FE4600C1B0A6 /* redbird-upflap.png */,
+				C430C3BF2590FE4700C1B0A6 /* yellowbird-downflap.png */,
+				C430C3C72590FE4800C1B0A6 /* yellowbird-midflap.png */,
+				C430C3BB2590FE4600C1B0A6 /* yellowbird-upflap.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		C430C3E62591078900C1B0A6 /* World */ = {
+			isa = PBXGroup;
+			children = (
+				C430C3E32591076A00C1B0A6 /* Base.swift */,
+			);
+			path = World;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,9 +221,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C430C3D42590FE4800C1B0A6 /* background-day.png in Resources */,
+				C430C3D82590FE4800C1B0A6 /* pipe-red.png in Resources */,
+				C430C3DD2590FE4800C1B0A6 /* 7.png in Resources */,
+				C430C3D22590FE4800C1B0A6 /* 6.png in Resources */,
+				C430C3D62590FE4800C1B0A6 /* base.png in Resources */,
+				C430C3D32590FE4800C1B0A6 /* redbird-upflap.png in Resources */,
+				C430C3DE2590FE4800C1B0A6 /* bluebird-upflap.png in Resources */,
+				C430C3D02590FE4800C1B0A6 /* 0.png in Resources */,
 				C430C3A02590FD5900C1B0A6 /* Main.storyboard in Resources */,
-				C430C3972590FD5900C1B0A6 /* GameScene.sks in Resources */,
+				C430C3DF2590FE4800C1B0A6 /* 4.png in Resources */,
+				C430C3C82590FE4800C1B0A6 /* 9.png in Resources */,
+				C430C3D72590FE4800C1B0A6 /* 8.png in Resources */,
+				C430C3CC2590FE4800C1B0A6 /* bluebird-midflap.png in Resources */,
+				C430C3CB2590FE4800C1B0A6 /* 2.png in Resources */,
+				C430C3DA2590FE4800C1B0A6 /* 3.png in Resources */,
+				C430C3CF2590FE4800C1B0A6 /* bluebird-downflap.png in Resources */,
+				C430C3D92590FE4800C1B0A6 /* yellowbird-downflap.png in Resources */,
+				C430C3C92590FE4800C1B0A6 /* redbird-downflap.png in Resources */,
+				C430C3DB2590FE4800C1B0A6 /* redbird-midflap.png in Resources */,
+				C430C3E12590FE4800C1B0A6 /* yellowbird-midflap.png in Resources */,
+				C430C3CA2590FE4800C1B0A6 /* 1.png in Resources */,
+				C430C3D12590FE4800C1B0A6 /* gameover.png in Resources */,
+				C430C3CD2590FE4800C1B0A6 /* 5.png in Resources */,
+				C430C3972590FD5900C1B0A6 /* WorldScene.sks in Resources */,
 				C430C3A22590FD5D00C1B0A6 /* Assets.xcassets in Resources */,
+				C430C3DC2590FE4800C1B0A6 /* pipe-green.png in Resources */,
+				C430C3D52590FE4800C1B0A6 /* yellowbird-upflap.png in Resources */,
+				C430C3E02590FE4800C1B0A6 /* background-night.png in Resources */,
+				C430C3CE2590FE4800C1B0A6 /* message.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +260,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C430C39B2590FD5900C1B0A6 /* GameScene.swift in Sources */,
+				C430C3E42591076A00C1B0A6 /* Base.swift in Sources */,
+				C430C39B2590FD5900C1B0A6 /* WorldScene.swift in Sources */,
 				C430C39D2590FD5900C1B0A6 /* GameViewController.swift in Sources */,
 				C430C3952590FD5900C1B0A6 /* AppDelegate.swift in Sources */,
 			);
