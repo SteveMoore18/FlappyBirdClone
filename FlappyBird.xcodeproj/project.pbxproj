@@ -40,6 +40,7 @@
 		C430C3E02590FE4800C1B0A6 /* background-night.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3C62590FE4800C1B0A6 /* background-night.png */; };
 		C430C3E12590FE4800C1B0A6 /* yellowbird-midflap.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C3C72590FE4800C1B0A6 /* yellowbird-midflap.png */; };
 		C430C3E42591076A00C1B0A6 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = C430C3E32591076A00C1B0A6 /* Base.swift */; };
+		C430C3E92591224D00C1B0A6 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C430C3E82591224D00C1B0A6 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		C430C3C62590FE4800C1B0A6 /* background-night.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-night.png"; sourceTree = "<group>"; };
 		C430C3C72590FE4800C1B0A6 /* yellowbird-midflap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowbird-midflap.png"; sourceTree = "<group>"; };
 		C430C3E32591076A00C1B0A6 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
+		C430C3E82591224D00C1B0A6 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				C430C3942590FD5900C1B0A6 /* AppDelegate.swift */,
 				C430C3962590FD5900C1B0A6 /* WorldScene.sks */,
 				C430C39A2590FD5900C1B0A6 /* WorldScene.swift */,
+				C430C3E82591224D00C1B0A6 /* Player.swift */,
 				C430C3E62591078900C1B0A6 /* World */,
 				C430C39C2590FD5900C1B0A6 /* GameViewController.swift */,
 				C430C39E2590FD5900C1B0A6 /* Main.storyboard */,
@@ -263,6 +266,7 @@
 				C430C3E42591076A00C1B0A6 /* Base.swift in Sources */,
 				C430C39B2590FD5900C1B0A6 /* WorldScene.swift in Sources */,
 				C430C39D2590FD5900C1B0A6 /* GameViewController.swift in Sources */,
+				C430C3E92591224D00C1B0A6 /* Player.swift in Sources */,
 				C430C3952590FD5900C1B0A6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
