@@ -12,9 +12,11 @@ class Player {
     private enum FlapPosition: Int {
         case Up, Middle, Down
     }
+    private var currFlapPos: FlapPosition = .Middle
     
     private var redBirdTextures: [SKTexture]!
     private var playerSprite: SKSpriteNode!
+    private var isAnimatePlaying = true
     
     var sprite: SKSpriteNode {
         get {
@@ -22,12 +24,13 @@ class Player {
         }
     }
     
-    let rotateUp = SKAction.rotate(toAngle: CGFloat.pi / 4, duration: 0.08)
-    let rotateDown = SKAction.rotate(toAngle: -CGFloat.pi / 2 , duration: 0.85)
+    private let rotateUp = SKAction.rotate(toAngle: CGFloat.pi / 4, duration: 0.08)
+    private let rotateDown = SKAction.rotate(toAngle: -CGFloat.pi / 2 , duration: 0.85)
     
-    var scene: SKScene!
+    private var scene: SKScene!
     
-    private var currFlapPos: FlapPosition = .Middle
+    public let playerCategory: UInt32 = 0x1 << 1
+    
     
     init(scene: SKScene) {
         
@@ -56,10 +59,14 @@ class Player {
                 height: redBirdTextures[currFlapPos.rawValue].size().height * 3
             )
         )
-        
+        let base: UInt32 = 0x1 << 3
+        let pipe: UInt32 = 0x1 << 2
         playerSprite.physicsBody?.mass = 1
+        playerSprite.physicsBody?.isDynamic = true
         playerSprite.physicsBody?.restitution = 0
         playerSprite.physicsBody?.angularDamping = 1
+        playerSprite.physicsBody?.categoryBitMask = playerCategory
+        playerSprite.physicsBody?.contactTestBitMask = base | pipe
         
         var isMiddleAfterDown = false
         Timer.scheduledTimer(withTimeInterval: TimeInterval(0.2), repeats: true, block: {_ in
@@ -74,29 +81,36 @@ class Player {
              up
              
              */
-            switch self.currFlapPos {
-            
-            case .Up:
-                self.currFlapPos = .Middle
-            case .Middle:
+            if self.isAnimatePlaying {
+                switch self.currFlapPos {
                 
-                if !isMiddleAfterDown {
-                    self.currFlapPos = .Down
-                    isMiddleAfterDown = true
-                } else {
-                    self.currFlapPos = .Up
-                    isMiddleAfterDown = false
+                case .Up:
+                    self.currFlapPos = .Middle
+                case .Middle:
+                    
+                    if !isMiddleAfterDown {
+                        self.currFlapPos = .Down
+                        isMiddleAfterDown = true
+                    } else {
+                        self.currFlapPos = .Up
+                        isMiddleAfterDown = false
+                    }
+                    
+                case .Down:
+                    self.currFlapPos = .Middle
+                
                 }
                 
-            case .Down:
-                self.currFlapPos = .Middle
-            
+                self.playerSprite.texture = self.redBirdTextures[self.currFlapPos.rawValue]
             }
             
-            self.playerSprite.texture = self.redBirdTextures[self.currFlapPos.rawValue]
             
         })
         
+    }
+    
+    func stopMoving() {
+        self.isAnimatePlaying = false
     }
     
     func touchesBegan() {
