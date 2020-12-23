@@ -12,9 +12,20 @@ class Player {
     private enum FlapPosition: Int {
         case Up, Middle, Down
     }
+    private enum BirdSkin: Int {
+        case Red, Yellow, Blue
+        
+        mutating func randomChange() {
+            let rand = Int.random(in: 0...3)
+            self = Player.BirdSkin(rawValue: rand) ?? .Red
+        }
+    }
+    
     private var currFlapPos: FlapPosition = .Middle
     
     private var redBirdTextures: [SKTexture]!
+    private var yellowBirdTextures: [SKTexture]!
+    private var blueBirdTextures: [SKTexture]!
     private var playerSprite: SKSpriteNode!
     private var isAnimatePlaying = true
     
@@ -28,6 +39,7 @@ class Player {
     public let playerCategory: UInt32 = 0x1 << 1
     private let baseAndPipeContact: UInt32 = 0x1 << 2
     
+    private var currentSkin = BirdSkin.Blue
     
     init(scene: SKScene) {
         
@@ -37,6 +49,18 @@ class Player {
             SKTexture(imageNamed: "redbird-upflap"),
             SKTexture(imageNamed: "redbird-midflap"),
             SKTexture(imageNamed: "redbird-downflap")
+        ]
+        
+        yellowBirdTextures = [
+            SKTexture(imageNamed: "yellowbird-upflap"),
+            SKTexture(imageNamed: "yellowbird-midflap"),
+            SKTexture(imageNamed: "yellowbird-downflap")
+        ]
+        
+        blueBirdTextures = [
+            SKTexture(imageNamed: "bluebird-upflap"),
+            SKTexture(imageNamed: "bluebird-midflap"),
+            SKTexture(imageNamed: "bluebird-downflap")
         ]
         
         playerSprite = SKSpriteNode(texture: redBirdTextures[currFlapPos.rawValue])
@@ -99,12 +123,23 @@ class Player {
                 
                 }
                 
-                self.playerSprite.texture = self.redBirdTextures[self.currFlapPos.rawValue]
+                self.playerSprite.texture = self.birdTexture(skin: self.currentSkin)[self.currFlapPos.rawValue]
             }
             
             
         })
         
+    }
+    
+    private func birdTexture(skin: BirdSkin) -> [SKTexture] {
+        switch currentSkin {
+        case .Blue:
+            return self.blueBirdTextures
+        case .Yellow:
+            return self.yellowBirdTextures
+        case .Red:
+            return self.redBirdTextures
+        }
     }
     
     func stopMoving() {
@@ -121,6 +156,8 @@ class Player {
         playerSprite.run(SKAction.rotate(toAngle: 0, duration: 0))
         playerSprite.position.x = scene.position.x - scene.frame.width / 4
         playerSprite.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        currentSkin.randomChange()
+        self.playerSprite.texture = self.birdTexture(skin: self.currentSkin)[self.currFlapPos.rawValue]
     }
     
     func touchesBegan() {
@@ -140,10 +177,5 @@ class Player {
         playerSprite.run(rotateDown, withKey: "RotateDown")
     }
     
-    func update() {
-        
-        //playerSprite.position.x = scene.position.x - scene.frame.width / 4
-        
-    }
     
 }

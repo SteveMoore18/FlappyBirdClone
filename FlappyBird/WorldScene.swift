@@ -93,7 +93,6 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         if !isGameOver {
             
             base.baseMoving()
-            player.update()
             
             // If it's first lauch then pipes dont moving
             if isGameStarted {
