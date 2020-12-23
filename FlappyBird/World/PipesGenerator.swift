@@ -22,18 +22,11 @@ class PipesGenerator {
     
     private let pipeGeneratorRange = -800...(-300)
     
+    private let pipeCategory: UInt32 = 0x1 << 2
     
-    var spritesLower: [SKSpriteNode] {
-        get {
-            return pipeLowerSprites
-        }
-    }
+    var spritesLower: [SKSpriteNode] { pipeLowerSprites }
     
-    var spritesHigher: [SKSpriteNode] {
-        get {
-            return pipeHigherSprites
-        }
-    }
+    var spritesHigher: [SKSpriteNode] { pipeHigherSprites }
     
     var worldSpeed: CGFloat!
     var scene: SKScene!
@@ -89,7 +82,7 @@ class PipesGenerator {
             pipeHigherSprites[i].physicsBody?.affectedByGravity = false
             pipeHigherSprites[i].physicsBody?.allowsRotation = false
             pipeHigherSprites[i].physicsBody?.isDynamic = false
-            pipeHigherSprites[i].physicsBody?.categoryBitMask = 0x1 << 2
+            pipeHigherSprites[i].physicsBody?.categoryBitMask = pipeCategory
             
         }
         
@@ -98,6 +91,15 @@ class PipesGenerator {
     func stopMoving() {
         self.worldSpeed = 0
         
+    }
+    
+    func restart() {
+        self.worldSpeed = 7
+        for i in 0..<pipeLowerSprites.count {
+            let randY = Int.random(in: pipeGeneratorRange)
+            pipeLowerSprites[i].position = CGPoint(x: distToFirstPipe + i * distBetPipes, y: randY)
+            pipeHigherSprites[i].position = CGPoint(x: distToFirstPipe + i * distBetPipes, y: randY + distBetLowHighPipe)
+        }
     }
     
     func pipesMoving() {

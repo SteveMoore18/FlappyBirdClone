@@ -15,7 +15,7 @@ class Base {
     private var worldSpeed: CGFloat!
     private var scene: SKScene!
     
-    public let baseCategory: UInt32 = 0x1 << 3
+    private let baseCategory: UInt32 = 0x1 << 2
     
     var sprites: [SKSpriteNode] {
         get {
@@ -50,6 +50,10 @@ class Base {
     
     func stopMoving() {
         self.worldSpeed = 0
+    }
+    
+    func restart() {
+        self.worldSpeed = 7
     }
     
     // The base is moving here

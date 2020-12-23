@@ -16,7 +16,11 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
     var player: Player!
     var pipesGenerator: PipesGenerator!
     var userInterface: UserInterface!
+    
     private var isGameOver: Bool = false
+    private var isGameStarted: Bool = false
+    
+    private let pipesAndBaseCategory: UInt32 = 0x1 << 2
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -41,9 +45,17 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(player.sprite)
         self.addChild(userInterface.getGameOverSprite)
+        self.addChild(userInterface.getFirstLaunchSprite)
+        self.addChild(userInterface.getPlayButtonSprite)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if !isGameStarted {
+            isGameStarted = true
+            userInterface.firstLaunchText(show: false)
+        }
+        
         if !isGameOver {
             player.touchesBegan()
         }
@@ -51,6 +63,18 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        for i in touches {
+            let locate = i.location(in: self)
+            
+            // If user pressed on the 'Restart' button
+            if userInterface.getPlayButtonSprite.contains(locate)
+                && isGameOver {
+                restartGame()
+            }
+            
+        }
+        
         if !isGameOver {
             player.touchesEnded()
         }
@@ -60,9 +84,15 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         
         if !isGameOver {
+            
             base.baseMoving()
             player.update()
-            pipesGenerator.pipesMoving()
+            
+            // If it's first lauch then pipes dont moving
+            if isGameStarted {
+                pipesGenerator.pipesMoving()
+            }
+            
         }
         
     }
@@ -72,12 +102,9 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         
         
         switch collision {
-        case 0x1 << 1 | 0x1 << 2:
-            gameOver()
-        case  0x1 << 1 | 0x1 << 3:
+        case player.playerCategory | pipesAndBaseCategory:
             gameOver()
         default: break
-            
         }
         
     }
@@ -88,6 +115,18 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         pipesGenerator.stopMoving()
         player.stopMoving()
         userInterface.gameOverText(show: true)
+        userInterface.playButtonShow(show: true)
+    }
+    
+    func restartGame() {
+        
+        isGameOver = false
+        base.restart()
+        pipesGenerator.restart()
+        player.restart()
+        userInterface.gameOverText(show: false)
+        userInterface.playButtonShow(show: false)
+        
     }
     
 }
