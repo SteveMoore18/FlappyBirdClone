@@ -22,6 +22,9 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
     
     private let pipesAndBaseCategory: UInt32 = 0x1 << 2
     
+    private var backgroundDay: SKSpriteNode!
+    private var backgroundNight: SKSpriteNode!
+    
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0, dy: -20)
@@ -30,6 +33,10 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         player = Player(scene: self)
         pipesGenerator = PipesGenerator(scene: self, worldSpeed: worldSpeed)
         userInterface = UserInterface(scene: self)
+        
+        backgroundDay = self.childNode(withName: "backgroundDay") as! SKSpriteNode
+        backgroundNight = self.childNode(withName: "backgroundNight") as! SKSpriteNode
+        
         
         for i in pipesGenerator.spritesLower {
             self.addChild(i)
@@ -126,6 +133,13 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         player.restart()
         userInterface.gameOverText(show: false)
         userInterface.playButtonShow(show: false)
+        switchDayNight()
+    }
+    
+    func switchDayNight() {
+        
+        let rand = Int.random(in: -2...(-1))
+        backgroundDay.zPosition = CGFloat(rand)
         
     }
     
