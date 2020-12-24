@@ -144,6 +144,8 @@ class Player {
     
     func stopMoving() {
         self.isAnimatePlaying = false
+        playerSprite.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        playerSprite.removeAllActions()
     }
     
     func restart() {

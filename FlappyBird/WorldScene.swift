@@ -34,8 +34,8 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         pipesGenerator = PipesGenerator(scene: self, worldSpeed: worldSpeed)
         userInterface = UserInterface(scene: self)
         
-        backgroundDay = self.childNode(withName: "backgroundDay") as! SKSpriteNode
-        backgroundNight = self.childNode(withName: "backgroundNight") as! SKSpriteNode
+        backgroundDay = self.childNode(withName: "backgroundDay") as? SKSpriteNode
+        backgroundNight = self.childNode(withName: "backgroundNight") as? SKSpriteNode
         
         
         for i in pipesGenerator.spritesLower {
