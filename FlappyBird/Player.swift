@@ -41,6 +41,8 @@ class Player {
     
     private var currentSkin = BirdSkin.Blue
     
+    private var count = 0
+    
     init(scene: SKScene) {
         
         self.scene = scene
@@ -87,6 +89,7 @@ class Player {
         playerSprite.physicsBody?.angularDamping = 1
         playerSprite.physicsBody?.categoryBitMask = playerCategory
         playerSprite.physicsBody?.contactTestBitMask = baseAndPipeContact
+        playerSprite.physicsBody?.collisionBitMask = baseAndPipeContact
         // so that the bird dont not fall
         playerSprite.physicsBody?.affectedByGravity = false
         
@@ -120,7 +123,7 @@ class Player {
                     
                 case .Down:
                     self.currFlapPos = .Middle
-                
+                    
                 }
                 
                 self.playerSprite.texture = self.birdTexture(skin: self.currentSkin)[self.currFlapPos.rawValue]
@@ -129,6 +132,11 @@ class Player {
             
         })
         
+    }
+    
+    func countIncr() -> Int {
+        count += 100
+        return count
     }
     
     private func birdTexture(skin: BirdSkin) -> [SKTexture] {
@@ -160,6 +168,7 @@ class Player {
         playerSprite.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         currentSkin.randomChange()
         self.playerSprite.texture = self.birdTexture(skin: self.currentSkin)[self.currFlapPos.rawValue]
+        count = 0
     }
     
     func touchesBegan() {

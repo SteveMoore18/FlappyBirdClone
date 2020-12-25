@@ -25,6 +25,7 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
     private var backgroundDay: SKSpriteNode!
     private var backgroundNight: SKSpriteNode!
     
+    
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0, dy: -20)
@@ -36,7 +37,6 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         
         backgroundDay = self.childNode(withName: "backgroundDay") as? SKSpriteNode
         backgroundNight = self.childNode(withName: "backgroundNight") as? SKSpriteNode
-        
         
         for i in pipesGenerator.spritesLower {
             self.addChild(i)
@@ -54,6 +54,8 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(userInterface.getGameOverSprite)
         self.addChild(userInterface.getFirstLaunchSprite)
         self.addChild(userInterface.getPlayButtonSprite)
+        self.addChild(pipesGenerator.hiddenRect)
+        self.addChild(userInterface.getCounterSprite)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -110,6 +112,10 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         switch collision {
         case player.playerCategory | pipesAndBaseCategory:
             gameOver()
+        case player.playerCategory | 0x1 << 4:
+            pipesGenerator.collisionHiddenRect(action: {
+                self.userInterface.setCountValue(value: self.player.countIncr())
+            })
         default: break
         }
         
@@ -122,6 +128,7 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         player.stopMoving()
         userInterface.gameOverText(show: true)
         userInterface.playButtonShow(show: true)
+        userInterface.setCounterPosition(pos: .AfterFall)
     }
     
     func restartGame() {
@@ -133,6 +140,8 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         userInterface.gameOverText(show: false)
         userInterface.playButtonShow(show: false)
         switchDayNight()
+        userInterface.setCountValue(value: 0)
+        userInterface.setCounterPosition(pos: .Default)
     }
     
     func switchDayNight() {
@@ -141,5 +150,4 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         backgroundDay.zPosition = CGFloat(rand)
         
     }
-    
 }

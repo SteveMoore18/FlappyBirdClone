@@ -31,6 +31,8 @@ class PipesGenerator {
     var worldSpeed: CGFloat!
     var scene: SKScene!
     
+    public var hiddenRect: SKShapeNode!
+    
     init(scene: SKScene, worldSpeed: CGFloat) {
         
         self.worldSpeed = worldSpeed
@@ -47,6 +49,14 @@ class PipesGenerator {
                        SKSpriteNode(texture: pipeTexture)
         ]
         
+        hiddenRect = SKShapeNode(rect: CGRect(x: -50, y: -distBetPipes / 2, width: 100, height: distBetPipes))
+        hiddenRect.strokeColor = .clear
+        hiddenRect.physicsBody = SKPhysicsBody(rectangleOf: hiddenRect.frame.size)
+        hiddenRect.physicsBody?.affectedByGravity = false
+        hiddenRect.physicsBody?.allowsRotation = false
+        hiddenRect.physicsBody?.isDynamic = false
+        hiddenRect.physicsBody?.categoryBitMask = 0x1 << 4
+        hiddenRect.physicsBody?.contactTestBitMask = 0x1 << 1
         
         for i in 0..<pipeLowerSprites.count {
             let randY = Int.random(in: pipeGeneratorRange)
@@ -60,6 +70,7 @@ class PipesGenerator {
             pipeHigherSprites[i].zPosition = 0
             pipeHigherSprites[i].setScale(3)
             
+            
             pipeLowerSprites[i].physicsBody = SKPhysicsBody(
                 texture: pipeTexture,
                 size: CGSize(
@@ -70,7 +81,7 @@ class PipesGenerator {
             pipeLowerSprites[i].physicsBody?.affectedByGravity = false
             pipeLowerSprites[i].physicsBody?.allowsRotation = false
             pipeLowerSprites[i].physicsBody?.isDynamic = false
-            pipeLowerSprites[i].physicsBody?.categoryBitMask = 0x1 << 2
+            pipeLowerSprites[i].physicsBody?.categoryBitMask = pipeCategory
             
             pipeHigherSprites[i].physicsBody = SKPhysicsBody(
                 texture: pipeTexture,
@@ -84,6 +95,38 @@ class PipesGenerator {
             pipeHigherSprites[i].physicsBody?.isDynamic = false
             pipeHigherSprites[i].physicsBody?.categoryBitMask = pipeCategory
             
+        }
+        
+        let y = (pipeLowerSprites[0].position.y + pipeHigherSprites[0].position.y) / 2
+        hiddenRect.position = CGPoint(x: CGFloat(distToFirstPipe), y: y)
+        
+    }
+    
+    var isGot = false
+    var currHiddenRect = 1
+    var count = 0
+    func collisionHiddenRect(action: @escaping () -> Void) {
+        
+        if !isGot {
+            let y = (pipeLowerSprites[currHiddenRect].position.y + pipeHigherSprites[currHiddenRect].position.y) / 2
+            let mv = SKAction.move(to: CGPoint(x: pipeLowerSprites[currHiddenRect].position.x, y: y), duration: 0.01)
+            
+            switch currHiddenRect {
+            case 0:
+                currHiddenRect = 1
+            case 1:
+                currHiddenRect = 2
+            case 2:
+                currHiddenRect = 0
+            default:
+                break
+            }
+            
+            hiddenRect.run(mv, completion: {
+                self.isGot = false
+                action()
+            })
+            isGot = true
         }
         
     }
@@ -100,6 +143,10 @@ class PipesGenerator {
             pipeLowerSprites[i].position = CGPoint(x: distToFirstPipe + i * distBetPipes, y: randY)
             pipeHigherSprites[i].position = CGPoint(x: distToFirstPipe + i * distBetPipes, y: randY + distBetLowHighPipe)
         }
+        let y = (pipeLowerSprites[0].position.y + pipeHigherSprites[0].position.y) / 2
+        hiddenRect.position = CGPoint(x: CGFloat(distToFirstPipe), y: y)
+        currHiddenRect = 1
+        isGot = false
     }
     
     func pipesMoving() {
@@ -132,8 +179,9 @@ class PipesGenerator {
             }
             pipeLowerSprites[i].position.x -= self.worldSpeed
             pipeHigherSprites[i].position.x -= self.worldSpeed
+            
         }
-        
+        hiddenRect.position.x -= self.worldSpeed
     }
     
 }
