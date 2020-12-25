@@ -135,7 +135,7 @@ class Player {
     }
     
     func countIncr() -> Int {
-        count += 100
+        count += 1
         return count
     }
     
