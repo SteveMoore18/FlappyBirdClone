@@ -36,6 +36,8 @@ class UserInterface {
     
     let animationDuration: TimeInterval = 0.1
     
+    private var count: Int = 0
+    
     init(scene: SKScene) {
         self.scene = scene
         
@@ -89,6 +91,8 @@ class UserInterface {
     }
     
     func setCountValue(value: Int) {
+        self.count = value
+        
         var t = 0
         if value >= 0 && value <= 9 {
             counterNumberSprites[0].texture = numberTextures[value]
@@ -143,7 +147,14 @@ class UserInterface {
         case .Default:
             counterSprite.run(SKAction.move(to: CGPoint(x: 0, y: 300), duration: animationDuration))
         case .AfterFall:
-            counterSprite.run(SKAction.move(to: CGPoint(x: 0, y: 0), duration: animationDuration))
+            // if count two-digit or three-digit then 'x' is shifted
+            var x = 0
+            if count >= 10 && count <= 99 {
+                x = -48
+            } else if count >= 100 && count <= 999 {
+                x = -72
+            }
+            counterSprite.run(SKAction.move(to: CGPoint(x: x, y: 0), duration: animationDuration))
         }
     }
 }
