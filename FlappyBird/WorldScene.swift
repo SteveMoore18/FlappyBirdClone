@@ -129,6 +129,7 @@ class WorldScene: SKScene, SKPhysicsContactDelegate {
         userInterface.gameOverText(show: true)
         userInterface.playButtonShow(show: true)
         userInterface.setCounterPosition(pos: .AfterFall)
+        userInterface.flash()
     }
     
     func restartGame() {

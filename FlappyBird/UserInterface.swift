@@ -22,6 +22,9 @@ class UserInterface {
     private var playButtonTexture: SKTexture!
     private var playButtonSprite: SKSpriteNode!
     
+    private var flashRect: SKShapeNode!
+    private var flashWasUsed = false
+    
     private var numberTextures: [SKTexture]!
     private var numberSprites: [SKSpriteNode]!
     private var counterNumberSprites: [SKSpriteNode]!
@@ -33,6 +36,7 @@ class UserInterface {
     var getGameOverSprite: SKSpriteNode { gameOverSprite }
     var getFirstLaunchSprite: SKSpriteNode { firstLaunchSprite }
     var getPlayButtonSprite: SKSpriteNode { playButtonSprite }
+    var getFlashRect: SKShapeNode { flashRect }
     
     let animationDuration: TimeInterval = 0.1
     
@@ -64,6 +68,15 @@ class UserInterface {
         playButtonSprite.alpha = 0
         playButtonSprite.setScale(3)
         
+        flashRect = SKShapeNode(rect: CGRect(
+                                    x: -scene.frame.width / 2,
+                                    y: -scene.frame.height / 2,
+                                    width: scene.frame.width,
+                                    height: scene.frame.height))
+        flashRect.zPosition = 4
+        flashRect.fillColor = .white
+        flashRect.alpha = 0
+        
         numberTextures = []
         numberSprites = []
         for i in 0...9 {
@@ -92,7 +105,7 @@ class UserInterface {
     
     func setCountValue(value: Int) {
         self.count = value
-        
+        flashWasUsed = false
         var t = 0
         if value >= 0 && value <= 9 {
             counterNumberSprites[0].texture = numberTextures[value]
@@ -155,6 +168,16 @@ class UserInterface {
                 x = -72
             }
             counterSprite.run(SKAction.move(to: CGPoint(x: x, y: 0), duration: animationDuration))
+        }
+    }
+    
+    
+    func flash() {
+        if !flashWasUsed {
+            flashRect.run(SKAction.fadeAlpha(to: 0.7, duration: 0.1), completion: {
+                self.flashRect.run(SKAction.fadeAlpha(to: 0, duration: 0.1))
+            })
+            flashWasUsed = true
         }
     }
 }
