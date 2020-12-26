@@ -11,7 +11,8 @@ class Base {
     
     private var baseTexture: SKTexture!
     private var baseBlocks: [SKSpriteNode]!
-    private let baseWidth: CGFloat = 1385
+    private let baseCount = 4
+    private let baseWidth: CGFloat = 336
     private var worldSpeed: CGFloat!
     private var scene: SKScene!
     
@@ -30,11 +31,11 @@ class Base {
         baseTexture = SKTexture(imageNamed: "base")
         baseBlocks = []
         
-        for i in 0..<4 {
+        for i in 0..<baseCount {
             baseBlocks.append(SKSpriteNode(texture: baseTexture))
             
             baseBlocks[i].position = CGPoint(
-                x: -scene.size.width / 2 + CGFloat(i * 336),
+                x: -scene.size.width / 2 + CGFloat(i) * baseWidth,
                 y: -scene.size.height / 2 + baseTexture.size().height / 2
             )
             baseBlocks[i].physicsBody = SKPhysicsBody(rectangleOf: baseTexture.size())
@@ -59,24 +60,14 @@ class Base {
     // The base is moving here
     func baseMoving() {
         
-        
-        for i in 0..<baseBlocks.count {
+        baseBlocks = baseBlocks.map({ (item) -> SKSpriteNode in
             
-            if (baseBlocks[i].position.x) < (-self.scene.size.width) {
-                
-                if i == 0 {
-                    baseBlocks[0].position.x = baseBlocks[baseBlocks.count - 1].position.x + 336
-                    
-                } else {
-                    baseBlocks[i].position.x = baseBlocks[i - 1].position.x + 336
-                    continue
-                }
-                
+            if item.position.x < -self.scene.size.width {
+                item.position.x = item.position.x + CGFloat(baseCount) * baseWidth
             }
-            
-            baseBlocks[i].position.x -= self.worldSpeed
-            
-        }
+            item.position.x -= self.worldSpeed
+            return item
+        })
         
     }
     
