@@ -53,7 +53,7 @@ class Base {
     }
     
     func restart() {
-        self.worldSpeed = 7
+        self.worldSpeed = 10
     }
     
     // The base is moving here

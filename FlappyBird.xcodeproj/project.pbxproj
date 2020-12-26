@@ -44,6 +44,7 @@
 		C430C3EC25915B4800C1B0A6 /* PipesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C430C3EB25915B4800C1B0A6 /* PipesGenerator.swift */; };
 		C430C4122592A5CE00C1B0A6 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C430C4112592A5CE00C1B0A6 /* UserInterface.swift */; };
 		C430C4152592AD2900C1B0A6 /* playbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C4142592AD2900C1B0A6 /* playbutton.png */; };
+		C4917488259742EA000D09BA /* WorldSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4917487259742EA000D09BA /* WorldSceneController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		C430C3EB25915B4800C1B0A6 /* PipesGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipesGenerator.swift; sourceTree = "<group>"; };
 		C430C4112592A5CE00C1B0A6 /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterface.swift; sourceTree = "<group>"; };
 		C430C4142592AD2900C1B0A6 /* playbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbutton.png; sourceTree = "<group>"; };
+		C4917487259742EA000D09BA /* WorldSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldSceneController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +123,6 @@
 				C430C3AD2590FE2E00C1B0A6 /* Assets */,
 				C430C3942590FD5900C1B0A6 /* AppDelegate.swift */,
 				C430C3962590FD5900C1B0A6 /* WorldScene.sks */,
-				C430C39A2590FD5900C1B0A6 /* WorldScene.swift */,
 				C430C4112592A5CE00C1B0A6 /* UserInterface.swift */,
 				C430C3E82591224D00C1B0A6 /* Player.swift */,
 				C430C3E62591078900C1B0A6 /* World */,
@@ -170,6 +171,8 @@
 		C430C3E62591078900C1B0A6 /* World */ = {
 			isa = PBXGroup;
 			children = (
+				C430C39A2590FD5900C1B0A6 /* WorldScene.swift */,
+				C4917487259742EA000D09BA /* WorldSceneController.swift */,
 				C430C3E32591076A00C1B0A6 /* Base.swift */,
 				C430C3EB25915B4800C1B0A6 /* PipesGenerator.swift */,
 			);
@@ -280,6 +283,7 @@
 				C430C3E92591224D00C1B0A6 /* Player.swift in Sources */,
 				C430C4122592A5CE00C1B0A6 /* UserInterface.swift in Sources */,
 				C430C3952590FD5900C1B0A6 /* AppDelegate.swift in Sources */,
+				C4917488259742EA000D09BA /* WorldSceneController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
