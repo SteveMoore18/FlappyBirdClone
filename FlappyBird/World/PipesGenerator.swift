@@ -75,25 +75,19 @@ class PipesGenerator {
         
     }
     
-    var isGot = false
-    var currHiddenRect = 1
-    var count = 0
+    private var isGot = false
+    private var currPipeIndex = 1 //index of the pipe that the player passed through
     func collisionHiddenRect(action: @escaping () -> Void) {
         
         if !isGot {
-            let y = (pipeLowerSprites[currHiddenRect].position.y + pipeHigherSprites[currHiddenRect].position.y) / 2
-            let mv = SKAction.move(to: CGPoint(x: pipeLowerSprites[currHiddenRect].position.x, y: y), duration: 0.01)
+            // Set new hidden rect position
+            let x = pipeLowerSprites[currPipeIndex].position.x
+            // Set new 'y' by arithmetic mean pipeLowerSprite.y and pipeHigherSprite.y
+            let y = (pipeLowerSprites[currPipeIndex].position.y + pipeHigherSprites[currPipeIndex].position.y) / 2
+            let mv = SKAction.move(to: CGPoint(x: x, y: y), duration: 0.01)
             
-            switch currHiddenRect {
-            case 0:
-                currHiddenRect = 1
-            case 1:
-                currHiddenRect = 2
-            case 2:
-                currHiddenRect = 0
-            default:
-                break
-            }
+            if currPipeIndex == (pipeCount - 1) { currPipeIndex = 0 }
+            else { self.currPipeIndex += 1 }
             
             hiddenRect.run(mv, completion: {
                 self.isGot = false
@@ -117,7 +111,7 @@ class PipesGenerator {
         }
         let y = (pipeLowerSprites[0].position.y + pipeHigherSprites[0].position.y) / 2
         hiddenRect.position = CGPoint(x: CGFloat(distToFirstPipe), y: y)
-        currHiddenRect = 1
+        currPipeIndex = 1
         isGot = false
     }
     
@@ -126,6 +120,7 @@ class PipesGenerator {
         // Moving Lower pipes
         pipeLowerSprites = pipeLowerSprites.map({ (item) -> SKSpriteNode in
             
+            // Move pipe which went off-screen
             if item.position.x < -self.scene.size.width + 156 {
                 let randY = Int.random(in: pipeGeneratorRange)
                 item.position = CGPoint(
@@ -140,10 +135,11 @@ class PipesGenerator {
         // Moving Higher pipes
         pipeHigherSprites = pipeHigherSprites.enumerated().map({ (index, item) -> SKSpriteNode in
             
+            // Move pipe which went off-screen
             if item.position.x < -self.scene.size.width + 156 {
                 item.position = CGPoint(
                     x: Int(item.position.x) + (distBetPipes * 3),
-                    y: Int(pipeLowerSprites[index].position.y) + distBetLowHighPipe // Getting 'y' from pipeLowerSprites[index].pos.y
+                    y: Int(pipeLowerSprites[index].position.y) + distBetLowHighPipe
                 )
             }
             
@@ -159,9 +155,7 @@ class PipesGenerator {
         hiddenRect = SKShapeNode(rect: CGRect(x: -50, y: -distBetPipes / 2, width: 100, height: distBetPipes))
         hiddenRect.strokeColor = .clear
         hiddenRect.physicsBody = SKPhysicsBody(rectangleOf: hiddenRect.frame.size)
-        hiddenRect.physicsBody?.affectedByGravity = false
-        hiddenRect.physicsBody?.allowsRotation = false
-        hiddenRect.physicsBody?.isDynamic = false
+        self.turnOffPhysics(node: hiddenRect)
         hiddenRect.physicsBody?.categoryBitMask = 0x1 << 4
         hiddenRect.physicsBody?.contactTestBitMask = 0x1 << 1
     }
@@ -174,19 +168,24 @@ class PipesGenerator {
         )
         item.zPosition = 0
         item.setScale(3)
-        item.physicsBody = SKPhysicsBody(
-            texture: item.texture!,
+        
+        item.physicsBody = SKPhysicsBody(texture: item.texture!,
             size: CGSize(
                 width: item.frame.width,
                 height: item.frame.height
             )
         )
-        item.physicsBody?.affectedByGravity = false
-        item.physicsBody?.allowsRotation = false
-        item.physicsBody?.isDynamic = false
+        
+        self.turnOffPhysics(node: item)
         item.physicsBody?.categoryBitMask = category
         
         return item
+    }
+    
+    private func turnOffPhysics(node: SKNode) {
+        node.physicsBody?.affectedByGravity = false
+        node.physicsBody?.allowsRotation = false
+        node.physicsBody?.isDynamic = false
     }
     
 }
