@@ -101,7 +101,7 @@ class PipesGenerator {
     }
 
     func restart() {
-        self.worldSpeed = 7
+        self.worldSpeed = 8
         for index in 0..<pipeCount {
             let randY = Int.random(in: pipeGeneratorRange)
             pipeLowerSprites[index].position = CGPoint(x: distToFirstPipe + index * distBetPipes, y: randY)

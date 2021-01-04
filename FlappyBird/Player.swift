@@ -37,7 +37,8 @@ class Player {
     private var scene: SKScene!
 
     public let playerCategory: UInt32 = 0x1 << 1
-    private let baseAndPipeContact: UInt32 = 0x1 << 2
+    private let pipeContact: UInt32 = 0x1 << 2
+    private let baseContact: UInt32 = 0x1 << 3
 
     private var currentSkin = BirdSkin.blue
 
@@ -87,8 +88,8 @@ class Player {
         playerSprite.physicsBody?.restitution = 0
         playerSprite.physicsBody?.angularDamping = 1
         playerSprite.physicsBody?.categoryBitMask = playerCategory
-        playerSprite.physicsBody?.contactTestBitMask = baseAndPipeContact
-        playerSprite.physicsBody?.collisionBitMask = baseAndPipeContact
+        playerSprite.physicsBody?.contactTestBitMask = pipeContact | baseContact
+        playerSprite.physicsBody?.collisionBitMask = pipeContact | baseContact
         // so that the bird dont not fall
         playerSprite.physicsBody?.affectedByGravity = false
 

@@ -6,11 +6,16 @@
 //
 
 import SpriteKit
+import AVKit
 
 class WorldSceneController {
 
     private enum GameAction {
         case gameOver, restart
+    }
+    
+    private enum SoundEffect {
+        case Die, Hit, Point, Swooshing, Wing
     }
 
     private var worldScene: WorldScene
@@ -19,7 +24,14 @@ class WorldSceneController {
     public var isGameStarted: Bool = false
     public let worldSpeed: CGFloat = 8
 
-    private let pipesAndBaseCategory: UInt32 = 0x1 << 2
+    private let pipeCategory: UInt32 = 0x1 << 2
+    private let baseCategory: UInt32 = 0x1 << 3
+    
+    private let soundStartGame = SKAction.playSoundFileNamed("sfx_swooshing", waitForCompletion: false)
+    private let soundDie = SKAction.playSoundFileNamed("sfx_die", waitForCompletion: false)
+    private let soundHit = SKAction.playSoundFileNamed("sfx_hit", waitForCompletion: false)
+    private let soundPoint = SKAction.playSoundFileNamed("sfx_point", waitForCompletion: false)
+    private let soundWing = SKAction.playSoundFileNamed("sfx_wing", waitForCompletion: false)
 
     init(worldScene: WorldScene) {
 
@@ -31,10 +43,15 @@ class WorldSceneController {
         if !isGameStarted {
             isGameStarted = true
             worldScene.userInterface.firstLaunchText(show: false)
+            playSound(soundEffect: .Swooshing)
         }
 
         if !isGameOver {
             worldScene.player.touchesBegan()
+        }
+        // if user was clicked on first launch or reset button then sound will not play
+        if !worldScene.hasActions() && !isGameOver {
+            playSound(soundEffect: .Wing)
         }
     }
 
@@ -48,6 +65,7 @@ class WorldSceneController {
                 && isGameOver {
                 // restartGame()
                 gameAction(action: .restart)
+                playSound(soundEffect: .Swooshing)
             }
 
         }
@@ -62,11 +80,19 @@ class WorldSceneController {
         let collision: UInt32 = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
 
         switch collision {
-        case worldScene.player.playerCategory | pipesAndBaseCategory:
+        case worldScene.player.playerCategory | pipeCategory:
+            if !isGameOver {
+                playSound(soundEffect: .Hit)
+                playSound(soundEffect: .Die)
+            }
+            gameAction(action: .gameOver)
+        case worldScene.player.playerCategory | baseCategory:
+            if !isGameOver { playSound(soundEffect: .Hit) }
             gameAction(action: .gameOver)
         case worldScene.player.playerCategory | 0x1 << 4:
             worldScene.pipesGenerator.collisionHiddenRect(action: {
                 self.worldScene.userInterface.setCountValue(value: self.worldScene.player.countIncr())
+                self.playSound(soundEffect: .Point)
             })
         default: break
         }
@@ -103,4 +129,20 @@ class WorldSceneController {
         worldScene.backgroundDay.zPosition = CGFloat(rand)
 
     }
+    
+    private func playSound(soundEffect: SoundEffect) {
+        switch soundEffect {
+        case .Die:
+            worldScene.run(soundDie)
+        case .Hit:
+            worldScene.run(soundHit)
+        case .Point:
+            worldScene.run(soundPoint)
+        case .Swooshing:
+            worldScene.run(soundStartGame)
+        case .Wing:
+            worldScene.run(soundWing)
+        }
+    }
+    
 }

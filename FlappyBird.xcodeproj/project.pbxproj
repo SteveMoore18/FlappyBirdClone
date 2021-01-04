@@ -44,6 +44,11 @@
 		C430C3EC25915B4800C1B0A6 /* PipesGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C430C3EB25915B4800C1B0A6 /* PipesGenerator.swift */; };
 		C430C4122592A5CE00C1B0A6 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C430C4112592A5CE00C1B0A6 /* UserInterface.swift */; };
 		C430C4152592AD2900C1B0A6 /* playbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = C430C4142592AD2900C1B0A6 /* playbutton.png */; };
+		C445886125A2F87900BE0A8B /* sfx_point.wav in Resources */ = {isa = PBXBuildFile; fileRef = C445885C25A2F87800BE0A8B /* sfx_point.wav */; };
+		C445886225A2F87900BE0A8B /* sfx_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = C445885D25A2F87800BE0A8B /* sfx_die.wav */; };
+		C445886325A2F87900BE0A8B /* sfx_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = C445885E25A2F87900BE0A8B /* sfx_hit.wav */; };
+		C445886425A2F87900BE0A8B /* sfx_swooshing.wav in Resources */ = {isa = PBXBuildFile; fileRef = C445885F25A2F87900BE0A8B /* sfx_swooshing.wav */; };
+		C445886525A2F87900BE0A8B /* sfx_wing.wav in Resources */ = {isa = PBXBuildFile; fileRef = C445886025A2F87900BE0A8B /* sfx_wing.wav */; };
 		C4917488259742EA000D09BA /* WorldSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4917487259742EA000D09BA /* WorldSceneController.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +92,11 @@
 		C430C3EB25915B4800C1B0A6 /* PipesGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipesGenerator.swift; sourceTree = "<group>"; };
 		C430C4112592A5CE00C1B0A6 /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterface.swift; sourceTree = "<group>"; };
 		C430C4142592AD2900C1B0A6 /* playbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbutton.png; sourceTree = "<group>"; };
+		C445885C25A2F87800BE0A8B /* sfx_point.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_point.wav; sourceTree = "<group>"; };
+		C445885D25A2F87800BE0A8B /* sfx_die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_die.wav; sourceTree = "<group>"; };
+		C445885E25A2F87900BE0A8B /* sfx_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_hit.wav; sourceTree = "<group>"; };
+		C445885F25A2F87900BE0A8B /* sfx_swooshing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_swooshing.wav; sourceTree = "<group>"; };
+		C445886025A2F87900BE0A8B /* sfx_wing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_wing.wav; sourceTree = "<group>"; };
 		C4917487259742EA000D09BA /* WorldSceneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldSceneController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,12 +130,13 @@
 		C430C3932590FD5800C1B0A6 /* FlappyBird */ = {
 			isa = PBXGroup;
 			children = (
+				C430C3E62591078900C1B0A6 /* World */,
+				C445885B25A2F82B00BE0A8B /* Sounds */,
 				C430C3AD2590FE2E00C1B0A6 /* Assets */,
 				C430C3942590FD5900C1B0A6 /* AppDelegate.swift */,
 				C430C3962590FD5900C1B0A6 /* WorldScene.sks */,
 				C430C4112592A5CE00C1B0A6 /* UserInterface.swift */,
 				C430C3E82591224D00C1B0A6 /* Player.swift */,
-				C430C3E62591078900C1B0A6 /* World */,
 				C430C39C2590FD5900C1B0A6 /* GameViewController.swift */,
 				C430C39E2590FD5900C1B0A6 /* Main.storyboard */,
 				C430C3A12590FD5D00C1B0A6 /* Assets.xcassets */,
@@ -177,6 +188,18 @@
 				C430C3EB25915B4800C1B0A6 /* PipesGenerator.swift */,
 			);
 			path = World;
+			sourceTree = "<group>";
+		};
+		C445885B25A2F82B00BE0A8B /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				C445885D25A2F87800BE0A8B /* sfx_die.wav */,
+				C445885E25A2F87900BE0A8B /* sfx_hit.wav */,
+				C445885C25A2F87800BE0A8B /* sfx_point.wav */,
+				C445885F25A2F87900BE0A8B /* sfx_swooshing.wav */,
+				C445886025A2F87900BE0A8B /* sfx_wing.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C445886125A2F87900BE0A8B /* sfx_point.wav in Resources */,
 				C430C3D42590FE4800C1B0A6 /* background-day.png in Resources */,
 				C430C3D82590FE4800C1B0A6 /* pipe-red.png in Resources */,
 				C430C3DD2590FE4800C1B0A6 /* 7.png in Resources */,
@@ -245,6 +269,8 @@
 				C430C3D32590FE4800C1B0A6 /* redbird-upflap.png in Resources */,
 				C430C3DE2590FE4800C1B0A6 /* bluebird-upflap.png in Resources */,
 				C430C3D02590FE4800C1B0A6 /* 0.png in Resources */,
+				C445886525A2F87900BE0A8B /* sfx_wing.wav in Resources */,
+				C445886225A2F87900BE0A8B /* sfx_die.wav in Resources */,
 				C430C3A02590FD5900C1B0A6 /* Main.storyboard in Resources */,
 				C430C3DF2590FE4800C1B0A6 /* 4.png in Resources */,
 				C430C3C82590FE4800C1B0A6 /* 9.png in Resources */,
@@ -252,10 +278,12 @@
 				C430C3CC2590FE4800C1B0A6 /* bluebird-midflap.png in Resources */,
 				C430C3CB2590FE4800C1B0A6 /* 2.png in Resources */,
 				C430C3DA2590FE4800C1B0A6 /* 3.png in Resources */,
+				C445886325A2F87900BE0A8B /* sfx_hit.wav in Resources */,
 				C430C3CF2590FE4800C1B0A6 /* bluebird-downflap.png in Resources */,
 				C430C3D92590FE4800C1B0A6 /* yellowbird-downflap.png in Resources */,
 				C430C3C92590FE4800C1B0A6 /* redbird-downflap.png in Resources */,
 				C430C3DB2590FE4800C1B0A6 /* redbird-midflap.png in Resources */,
+				C445886425A2F87900BE0A8B /* sfx_swooshing.wav in Resources */,
 				C430C3E12590FE4800C1B0A6 /* yellowbird-midflap.png in Resources */,
 				C430C3CA2590FE4800C1B0A6 /* 1.png in Resources */,
 				C430C4152592AD2900C1B0A6 /* playbutton.png in Resources */,

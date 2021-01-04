@@ -16,7 +16,7 @@ class Base {
     private var worldSpeed: CGFloat!
     private var scene: SKScene!
 
-    private let baseCategory: UInt32 = 0x1 << 2
+    private let baseCategory: UInt32 = 0x1 << 3
 
     var sprites: [SKSpriteNode] {
         get {
