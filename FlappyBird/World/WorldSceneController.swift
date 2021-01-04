@@ -17,7 +17,7 @@ class WorldSceneController {
 
     public var isGameOver: Bool = false
     public var isGameStarted: Bool = false
-    public let worldSpeed: CGFloat = 10
+    public let worldSpeed: CGFloat = 8
 
     private let pipesAndBaseCategory: UInt32 = 0x1 << 2
 
